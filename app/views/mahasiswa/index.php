@@ -1,5 +1,42 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-6">
+            <?php Flasher::flash(); ?>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <button type="button" class="btn btn-primary tombolTambahData"
+                data-toggle="modal" data-target="#formModal">
+                Tambah Data Mahasiswa
+            </button>
+            <br><br
+            <h3>Daftar Mahasiswa</h3>
 
-<!-- Modal Tambah / Ubah Data -->
+            <ul class="list-group">
+                <?php foreach ($data['mhs'] as $mhs) : ?>
+                    <li class="list-group-item">
+                        <?php echo $mhs['nama']; ?>
+                        <a href="<?php echo BASEURL; ?>/mahasiswa/hapus/<?php echo $mhs['id']; ?>"
+                            class="badge badge-danger float-right ml-1" onclick="return confirm('Yakin?');">
+                            Hapus
+                        </a>
+                        <a href="<?php echo BASEURL; ?>/mahasiswa/ubah/<?php echo $mhs['id']; ?>"
+                            class="badge badge-success float-right ml-1 tampilModalUbah" data-toggle="modal" data-target="#formModal" data-id="<?php echo $mhs['id']; ?>">
+                            Ubah
+                        </a>
+                        <a href="<?php echo BASEURL; ?>/mahasiswa/detail/<?php echo $mhs['id']; ?>"
+                            class="badge badge-primary float-right ml-1">
+                            Detail
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Tambah Data -->
 <div class="modal fade" id="formModal" tabindex="-1" role="dialog"
     aria-labelledby="judulModal" aria-hidden="true">
 
@@ -17,14 +54,9 @@
                 </button>
             </div>
 
-            <form id="formMahasiswa"
-                action="<?= BASEURL; ?>/mahasiswa/tambah"
-                method="post">
-
                 <div class="modal-body">
-
+                    <form action="<?php echo BASEURL; ?>/mahasiswa/tambah" method="post">
                     <input type="hidden" id="id" name="id">
-
                     <div class="form-group">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control"
@@ -45,23 +77,14 @@
 
                     <div class="form-group">
                         <label for="jurusan">Jurusan</label>
-                        <select class="form-control"
-                            id="jurusan" name="jurusan" required>
-                            <option value="Teknik Informatika">
-                                Teknik Informatika
-                            </option>
-                            <option value="Sistem Informasi">
-                                Sistem Informasi
-                            </option>
-                            <option value="Bisnis Digital">
-                                Bisnis Digital
-                            </option>
-                            <option value="Teknologi Informasi">
-                                Teknologi Informasi
-                            </option>
+                        <select class="form-control" id="jurusan"
+                            name="jurusan" required>
+                            <option value="Teknik Informatika">Teknik Informatika</option>
+                            <option value="Sistem Informasi">Sistem Informasi</option>
+                            <option value="Bisnis Digital">Bisnis Digital</option>
+                            <option value="Teknologi Informasi">Teknologi Informasi</option>
                         </select>
                     </div>
-
                 </div>
 
                 <div class="modal-footer">
@@ -70,14 +93,12 @@
                         Close
                     </button>
 
-                    <button type="submit" class="btn btn-primary"
-                        id="tombolSubmit">
+                    <button type="submit" class="btn btn-primary">
                         Tambah Data
                     </button>
                 </div>
 
             </form>
-
         </div>
     </div>
 </div>
