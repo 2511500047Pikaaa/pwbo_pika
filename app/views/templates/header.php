@@ -20,6 +20,7 @@
                 <a class="nav-item nav-link active" href="<?php echo BASEURL; ?>/home">Home <span class="
                 sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="<?php echo BASEURL; ?>/mahasiswa">Mahasiswa</a>
+                <a class="nav-item nav-link" href="<?php echo BASEURL; ?>/pengembalian">Pengembalian</a>
                 <a class="nav-item nav-link" href="<?php echo BASEURL; ?>/about">About</a>
             </div>
         </div>
